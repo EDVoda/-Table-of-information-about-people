@@ -1,0 +1,11 @@
+html {
+  line-height: 1.6;
+  color: #666;
+  background: #F6F6F6;
+}
+
+body{
+  position: relative;
+  font-family: tahoma;
+  margin-left: 15%;
+}
