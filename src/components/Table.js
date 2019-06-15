@@ -230,6 +230,7 @@ class Home extends React.Component{
         let arr = this.state.info;
         let mass = [];
         let result = [];
+
             for (let i = 0; i < arr.length; i++) {
                 for (let p = 0; p < arr[i].name.first.length; p++) {
                     if(arr[i].name.first[p] === val[p]){
@@ -239,13 +240,13 @@ class Home extends React.Component{
                     }
                 }
             }
+
             result = mass.filter(
                 function(item, pos) {
                 return mass.indexOf(item) === pos;
             });
 
             if(result.length !== 0){
-                console.log(result);
                 let out = [];
                 for (let i = 0; i < result.length; i++) {
                     if (i % 2 === 0) {
@@ -351,7 +352,11 @@ class Home extends React.Component{
                 }
                 this.setState({products: out})
             }else{
-                this.FullInfo();
+                    if(val.length !==0 ){
+                        this.setState({products: []})
+                    }else{
+                        this.FullInfo()
+                    }
             }
 
 
