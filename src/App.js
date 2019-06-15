@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Table from "./components/Table";
+import TableContainer from "./containers/TableContainer";
 
 
 import './App.css'
@@ -8,7 +8,7 @@ export class App extends Component {
 
     render() {
         return (
-                <Table/>
+                <TableContainer/>
         )
     }
 }

@@ -59,6 +59,8 @@
 
 .boxImgGender {
     position: relative;
+    height: 10%;
+    width: 10%;
     top:0px;
 }
 
