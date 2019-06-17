@@ -22,8 +22,7 @@ class Header extends React.Component{
         this.closeModal = this.closeModal.bind(this);
     };
 
-    FullInfo(e){
-
+    FullInfo(){
         let i = 0;
         let products = this.props.info.map((products) => {
             products['id']= i;
@@ -32,7 +31,7 @@ class Header extends React.Component{
                 return(
                     <div key={products.id} className="block" >
                         <img alt="human avatar" className="img" src={products.picture.medium}/>
-                        <table className="tab1e" >
+                        <table className="tab1e width_table" >
                             <tbody>
                             <tr>
                                 <td className="table_text">{products.name.last}</td>
@@ -50,8 +49,9 @@ class Header extends React.Component{
             {
                 return(
                     <div key={products.id} className="block"  style={{ backgroundColor: "#C0C0C0"}}>
+                        <div className="block">
                         <img alt="" className="img" src={products.picture.medium}/>
-                        <table className="tab1e" >
+                        <table className="tab1e width_table" >
                             <tbody>
                             <tr>
                                 <td className="table_text">{products.name.last}</td>
@@ -63,121 +63,13 @@ class Header extends React.Component{
                             </tbody>
                         </table>
                         <img  alt="plus button"  title="Click for more information." src={plus} className="button" onClick={() => this.FullInfo(products.id)}/>
+                        </div>
                     </div>
                 );
             }
 
         });
-        if(e != null) {
-            let product = products;
-            if (e % 2 === 0) {
-                product[e] =
-                    <div key={e} className="block" style={{backgroundColor: "#C0C0C0"}}>
-                        <img alt="" className="img" src={this.props.info[e].picture.medium}/>
-                        <table className="tab1e">
-                            <tbody>
-                            <tr >
-                                <td className="table_text">{this.props.info[e].name.last}</td>
-                                <td className="table_text">{this.props.info[e].name.first}</td>
-                                <td className="table_text">{this.props.info[e].login.username}</td>
-                                <td className="table_text">{this.props.info[e].cell}</td>
-                                <td className="table_text">{this.props.info[e].location.city}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <img alt="minus button"  title="Click to hide full details." src={minus} className="button" onClick={() => this.FullInfo()}/>
-
-                        <div className="box">
-                            <table style={{position: 'relative', left: 105}}>
-                                <tbody>
-                                <tr>
-                                    <td><b>{this.props.info[e].name.first}</b></td>
-                                    {this.props.info[e].gender === "male"
-                                        ? male_img
-                                        : female_img}
-                                </tr>
-                                </tbody>
-                            </table>
-                            <table className="table_full">
-                                <tbody>
-                                <tr>
-                                    <td><b>Username </b>{this.props.info[e].login.username}</td>
-                                    <td><b>Address </b>{this.props.info[e].location.street}</td>
-                                    <td>
-                                        <b>Birthday </b>{this.props.info[e].dob.date.slice(0, 10).replace(/-/g, '/')}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b>Registred </b>{this.props.info[e].registered.date.slice(0, 10).replace(/-/g, '/')}
-                                    </td>
-                                    <td><b>City </b>{this.props.info[e].location.city}</td>
-                                    <td><b>Phone </b>{this.props.info[e].phone}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Email </b>{this.props.info[e].email}</td>
-                                    <td><b>Post code </b>{this.props.info[e].location.postcode}</td>
-                                    <td><b>Cell </b>{this.props.info[e].cell}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>;
-            } else {
-                product[e] =
-                    <div key={e} className="block">
-                        <img alt="" className="img" src={this.props.info[e].picture.medium}/>
-                        <table className="tab1e">
-                            <tbody>
-                            <tr>
-                                <td style={{width: 120}}>{this.props.info[e].name.last}</td>
-                                <td style={{width: 120}}>{this.props.info[e].name.first}</td>
-                                <td style={{width: 120}}>{this.props.info[e].login.username}</td>
-                                <td style={{width: 120}}>{this.props.info[e].cell}</td>
-                                <td style={{width: 120}}>{this.props.info[e].location.city}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <img alt="minus button"  title="Click to hide full details." src={minus} className="button"  onClick={() => this.FullInfo()}/>
-                        <div className="box">
-                            <table style={{position: 'relative', left: 105}}>
-                                <tbody>
-                                <tr>
-                                    <td><b>{this.props.info[e].name.first}</b></td>
-                                    {this.props.info[e].gender === "male"
-                                        ? male_img
-                                        : female_img}
-                                </tr>
-                                </tbody>
-                            </table>
-                            <table className="table_full">
-                                <tbody>
-                                <tr>
-                                    <td><b>Username </b>{this.props.info[e].login.username}</td>
-                                    <td><b>Address </b>{this.props.info[e].location.street}</td>
-                                    <td><b>Birthday </b>{this.props.info[e].dob.date.slice(0, 10).replace(/-/g, '/')}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Registred </b>{this.props.info[e].registered.date.slice(0, 10).replace(/-/g, '/')}</td>
-                                    <td><b>City </b>{this.props.info[e].location.city}</td>
-                                    <td><b>Phone </b>{this.props.info[e].phone}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Email </b>{this.props.info[e].email}</td>
-                                    <td><b>Post code </b>{this.props.info[e].location.postcode}</td>
-                                    <td><b>Cell </b>{this.props.info[e].cell}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-            }
-            this.props.getState(product);
-
-        }else {
             this.props.getState(products);
-
-        }
     }
 
     Search(){
@@ -206,22 +98,24 @@ class Header extends React.Component{
                 let out = [];
                 for (let i = 0; i < result.length; i++) {
                     if (i % 2 === 0) {
-                        out.push (<div key={i} className="block" style={{backgroundColor: "#C0C0C0"}}>
+                        out.push (
+                            <div key={i} className="block" style={{backgroundColor: "#C0C0C0"}}>
+                                <div className="block">
                                 <img alt="" className="img" src={this.props.info[result[i]].picture.medium}/>
-                                <table className="tab1e">
-                                    <tbody>
-                                    <tr>
-                                        <td className="table_text">{this.props.info[result[i]].name.last}</td>
-                                        <td className="table_text">{this.props.info[result[i]].name.first}</td>
-                                        <td className="table_text">{this.props.info[result[i]].login.username}</td>
-                                        <td className="table_text">{this.props.info[result[i]].cell}</td>
-                                        <td className="table_text">{this.props.info[result[i]].location.city}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
+                                    <table className="tab1e width_table">
+                                        <tbody>
+                                        <tr>
+                                            <td className="table_text">{this.props.info[result[i]].name.last}</td>
+                                            <td className="table_text">{this.props.info[result[i]].name.first}</td>
+                                            <td className="table_text">{this.props.info[result[i]].login.username}</td>
+                                            <td className="table_text">{this.props.info[result[i]].cell}</td>
+                                            <td className="table_text">{this.props.info[result[i]].location.city}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div className="box">
-                                    <table style={{position: 'relative', left: 105}}>
+                                    <table className="table_full">
                                         <tbody>
                                         <tr>
                                             <td><b>{this.props.info[result[i]].name.first}</b></td>
@@ -231,7 +125,7 @@ class Header extends React.Component{
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <table className="table_full">
+                                    <table className="table_full width_table">
                                         <tbody>
                                         <tr>
                                             <td><b>Username </b>{this.props.info[result[i]].login.username}</td>
@@ -259,20 +153,22 @@ class Header extends React.Component{
                     } else {
                         out.push(
                             <div key={i} className="block">
-                                <img alt="" className="img" src={this.props.info[result[i]].picture.medium}/>
-                                <table className="tab1e">
-                                    <tbody>
-                                    <tr>
-                                        <td className="table_text">{this.props.info[result[i]].name.last}</td>
-                                        <td className="table_text">{this.props.info[result[i]].name.first}</td>
-                                        <td className="table_text">{this.props.info[result[i]].login.username}</td>
-                                        <td className="table_text">{this.props.info[result[i]].cell}</td>
-                                        <td className="table_text">{this.props.info[result[i]].location.city}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <div className="block">
+                                    <img alt="" className="img" src={this.props.info[result[i]].picture.medium}/>
+                                    <table className="tab1e width_table">
+                                        <tbody>
+                                        <tr>
+                                            <td className="table_text">{this.props.info[result[i]].name.last}</td>
+                                            <td className="table_text">{this.props.info[result[i]].name.first}</td>
+                                            <td className="table_text">{this.props.info[result[i]].login.username}</td>
+                                            <td className="table_text">{this.props.info[result[i]].cell}</td>
+                                            <td className="table_text">{this.props.info[result[i]].location.city}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div className="box">
-                                    <table style={{position: 'relative', left: 105}}>
+                                    <table className="table_full">
                                         <tbody>
                                         <tr>
                                             <td><b>{this.props.info[result[i]].name.first}</b></td>
@@ -282,7 +178,7 @@ class Header extends React.Component{
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <table className="table_full">
+                                    <table className="table_full width_table">
                                         <tbody>
                                         <tr>
                                             <td><b>Username </b>{this.props.info[result[i]].login.username}</td>
@@ -355,20 +251,20 @@ class Header extends React.Component{
 
     render() {
         return (
-            <div>
-                <div>
+            <div className="tab">
+                <div >
                     <input type="text" name="text" id="input_search" placeholder="Search"  onChange={() => this.Search()}/>
                     <input type="button" name="" value="Show chart" className="Get_histogram" onClick={() => this.openModal()}/>
                     <b>
-                        <table className="tab">
+                        <table className="tab_header">
                             <tbody>
                             <tr>
-                                <td style={{width: 55}}></td>
-                                <td className="table_text">Last</td>
-                                <td className="table_text">First</td>
-                                <td className="table_text">Username</td>
-                                <td className="table_text">Phone</td>
-                                <td className="table_text">Location</td>
+
+                                <td className="table_header">Last</td>
+                                <td className="table_header">First</td>
+                                <td className="table_header">Username</td>
+                                <td className="table_header">Phone</td>
+                                <td className="table_header">Location</td>
                             </tr>
                             </tbody>
                         </table>

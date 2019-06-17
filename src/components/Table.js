@@ -42,7 +42,7 @@ class Home extends React.Component{
 
                          <div key={products.id} className="block"  style={this.state.background}>
                              <img alt="human avatar" className="img" src={products.picture.medium}/>
-                             <table className="tab1e" >
+                             <table className="tab1e width_table" >
                                  <tbody>
                                  <tr >
                                      <td className="table_text">{products.name.last}</td>
@@ -75,7 +75,7 @@ class Home extends React.Component{
                 return(
                     <div key={products.id} className="block" >
                         <img alt="human avatar" className="img" src={products.picture.medium}/>
-                        <table className="tab1e" >
+                        <table className="tab1e width_table" >
                             <tbody>
                             <tr>
                                 <td className="table_text">{products.name.last}</td>
@@ -94,7 +94,7 @@ class Home extends React.Component{
                 return(
                     <div key={products.id} className="block"  style={{ backgroundColor: "#C0C0C0"}}>
                         <img alt="" className="img" src={products.picture.medium}/>
-                        <table className="tab1e" >
+                        <table className="tab1e width_table" >
                             <tbody>
                             <tr>
                                 <td className="table_text">{products.name.last}</td>
@@ -116,8 +116,9 @@ class Home extends React.Component{
                 if (e % 2 === 0) {
                     product[e] =
                         <div key={e} className="block" style={{backgroundColor: "#C0C0C0"}}>
+                            <div className="block">
                             <img alt="" className="img" src={this.props.info[e].picture.medium}/>
-                            <table className="tab1e">
+                            <table className="tab1e width_table">
                                 <tbody>
                                 <tr >
                                     <td className="table_text">{this.props.info[e].name.last}</td>
@@ -129,9 +130,9 @@ class Home extends React.Component{
                                 </tbody>
                             </table>
                             <img alt="minus button"  title="Click to hide full details." src={minus} className="button" onClick={() => this.FullInfo()}/>
-
+                            </div>
                             <div className="box">
-                                <table style={{position: 'relative', left: 105}}>
+                                <table className="table_full">
                                     <tbody>
                                     <tr>
                                         <td><b>{this.props.info[e].name.first}</b></td>
@@ -141,7 +142,7 @@ class Home extends React.Component{
                                     </tr>
                                     </tbody>
                                 </table>
-                                <table className="table_full">
+                                <table className="table_full width_table">
                                     <tbody>
                                     <tr>
                                         <td><b>Username </b>{this.props.info[e].login.username}</td>
@@ -169,8 +170,9 @@ class Home extends React.Component{
                 } else {
                     product[e] =
                         <div key={e} className="block">
+                        <div className="block">
                         <img alt="" className="img" src={this.props.info[e].picture.medium}/>
-                        <table className="tab1e">
+                        <table className="tab1e width_table">
                             <tbody>
                             <tr>
                                 <td style={{width: 120}}>{this.props.info[e].name.last}</td>
@@ -182,8 +184,9 @@ class Home extends React.Component{
                             </tbody>
                         </table>
                         <img alt="minus button"  title="Click to hide full details." src={minus} className="button"  onClick={() => this.FullInfo()}/>
+                        </div>
                         <div className="box">
-                            <table style={{position: 'relative', left: 105}}>
+                            <table className="table_full">
                                 <tbody>
                                 <tr>
                                     <td><b>{this.props.info[e].name.first}</b></td>
@@ -193,7 +196,7 @@ class Home extends React.Component{
                                 </tr>
                                 </tbody>
                             </table>
-                            <table className="table_full">
+                            <table className="table_full width_table">
                                 <tbody>
                                 <tr>
                                     <td><b>Username </b>{this.props.info[e].login.username}</td>
